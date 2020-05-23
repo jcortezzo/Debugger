@@ -19,8 +19,18 @@ public class Player : LivingEntity
     {
         //GetDirectionalInput();
         base.Update();
-        if (Input.GetKeyDown(KeyCode.R) && (weaponHolder.primary == null || !weaponHolder.primary.attacking)) weaponHolder.SwitchWeapon();
-        if (Input.GetKeyDown(KeyCode.F) && weaponHolder.primary != null && !weaponHolder.primary.attacking) weaponHolder.DropWeapon(true);
+        if (Input.GetKeyDown(KeyCode.R) &&
+            (weaponHolder.primary == null ||
+            !weaponHolder.primary.attacking))
+        {
+            weaponHolder.SwitchWeapon();
+        }
+        if (Input.GetKeyDown(KeyCode.F) &&
+            weaponHolder.primary != null &&
+            !weaponHolder.primary.attacking)
+        {
+            weaponHolder.DropWeapon(true);
+        }
     }
 
     public override void GetDirectionalInput()
@@ -42,10 +52,10 @@ public class Player : LivingEntity
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector2 newVelocity = new Vector2(horizontal, vertical);// * speed;
+        Vector2 newVelocity = new Vector2(horizontal, vertical);
         newVelocity.Normalize();
 
-        rb.velocity = newVelocity * speed;// * Time.deltaTime;
+        rb.velocity = newVelocity * speed;
         float e = Mathf.Pow(10, -2);
         if (Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y) > e)
         {
@@ -68,12 +78,8 @@ public class Player : LivingEntity
     {
         Debug.Log("player instance destroyed");
         Debug.Log("player health " + GlobalValues.Instance.playerHealth);
-        //if (health < 10)
-        //{
         health++;
-        //}
         GlobalValues.Instance.playerHealth = health;
-        //GlobalValues.Instance.level++;
     }
 
     public bool HasWeaponEquipped()

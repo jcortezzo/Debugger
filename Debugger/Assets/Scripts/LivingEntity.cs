@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Defines a LivingEntity, that is, something that moves
+ * around and can attack. LivingEntities can carry weapons
+ * using their WeaponHolders. How LivingEntities move and
+ * attack are determined by the subclass's implementation.
+ * LivingEntities also have an alignment.
+ */ 
 public abstract class LivingEntity : MonoBehaviour
 {
     public Rigidbody2D rb;

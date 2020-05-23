@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Giver : MonoBehaviour
 {
-
     protected bool playerCollision = false;
     protected Player player;
 

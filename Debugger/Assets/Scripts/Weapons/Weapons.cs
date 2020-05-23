@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Represents the abstract form of a weapon. Abstract because
+ * this doesn't represent what any particular weapon is, but
+ * rather the default behavior and some needed implementation
+ * for something to be considered a "weapon." Weapons should be
+ * able to attack, though the implementation of this feature
+ * depends on the subclass being defined. Weapons can also
+ * come in melee form, in which case they can be swung. Being
+ * melee / ranged is not mutually exclusive, that is, a weapon
+ * can both be ranged and melee.
+ */ 
 public abstract class Weapon : MonoBehaviour
 {
     public float damage;
@@ -22,7 +33,6 @@ public abstract class Weapon : MonoBehaviour
     protected CameraController cam;
     protected const float SHAKE_TIME = 0.05f;
     protected Animator anim;
-    //LivingEntity alignment;
     public Alignment alignment;
     protected WeaponHolder weaponHolder;
 
@@ -35,7 +45,6 @@ public abstract class Weapon : MonoBehaviour
         cam = FindObjectOfType<CameraController>();
         anim = GetComponent<Animator>();
         weaponHolder = GetComponentInParent<WeaponHolder>(); // sketch
-        //Debug.Log(weaponHolder);
     }
 
     // Update is called once per frame
@@ -49,15 +58,22 @@ public abstract class Weapon : MonoBehaviour
 
     public abstract void Attack();
 
+    /**
+     * Determines whether self is in cooldown or not
+     */ 
     public bool IsCD()
     {
         return cdTimer > 0;
     }
 
+    /**
+     * Inflicts damage on enemy or breakable if the weapon
+     * is being swung. Has no effect if the weapon isn't
+     * being swung
+     */
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!attacking) return;
-        //if (collision.gameObject.CompareTag("Enemy"))
         LivingEntity e = collision.gameObject.GetComponent<LivingEntity>();
         Breakable b = collision.gameObject.GetComponent<Breakable>();
         if (e != null &&
@@ -71,6 +87,10 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
+    /**
+     * Inflicts damage amoung of damage to given
+     * LivingEntity e
+     */ 
     public virtual void Damage(LivingEntity e)
     {
         e.health -= this.damage;
@@ -78,6 +98,10 @@ public abstract class Weapon : MonoBehaviour
         e.GetComponent<Rigidbody2D>().AddForce(direction * knockback);
     }
 
+    /**
+     * Shakes the camera for SHAKE_TIME
+     * by weight amount
+     */ 
     protected void ShakeCamera()
     {
         this.cam.Shake((transform.position - muzzle.position).normalized, weight, SHAKE_TIME);

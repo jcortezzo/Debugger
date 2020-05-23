@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Represents a Projectile, which is an entity
+ * shot from something (often a weapon). Projectiles
+ * will move towards a given direction at a given speed.
+ */ 
 public abstract class Projectile : MonoBehaviour
 {
     public float damage;
@@ -12,7 +17,11 @@ public abstract class Projectile : MonoBehaviour
     public float knockback;
     public float hitstun;
     public Alignment alignment;
-    // Start is called before the first frame update
+
+    /**
+     * Initialized a new Projectile by giving a direction and
+     * setting its rotation to correspond with its direction
+     */
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,6 +41,10 @@ public abstract class Projectile : MonoBehaviour
         Move();
     }
 
+    /**
+     * Projectiles will expire when they hit a wall, enemy,
+     * or a breakable object.
+     */
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         LivingEntity e = collision.gameObject.GetComponent<LivingEntity>();
@@ -58,6 +71,9 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
+    /**
+     * Inflicts self's damage on a given LivingEntity e 
+     */
     public virtual void Damage(LivingEntity e)
     {
         e.health -= this.damage;
@@ -65,16 +81,29 @@ public abstract class Projectile : MonoBehaviour
         e.GetComponent<Rigidbody2D>().AddForce(direction * knockback);
     }
 
+    public virtual void OnDestroy()
+    {
+        Destroy(this.gameObject);
+    }
+
+    // legacy code, deprecated by OnDestroy()
     public virtual void EndLife()
     {
         Destroy(this.gameObject);
     }
 
+    /**
+     * Advances this in direction by speed
+     */ 
     public virtual void Move()
     {
         rb.velocity = direction * speed;
     }
 
+    /**
+     * Determines whether a Projectile is
+     * expired or not (its lifespan runs out)
+     */
     public bool IsExpired()
     {
         return lifeSpan <= 0;

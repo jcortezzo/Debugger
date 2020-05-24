@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Player : LivingEntity
 {
-    public ParticleSystem dustParticle;
-
     protected override void Start()
     {
         base.Start();
         GetDirectionalInput();
         health = GlobalValues.Instance.playerHealth;
         alignment = Alignment.FRIEND;
-        dustParticle = this.GetComponentInChildren<ParticleSystem>();
     }
 
     public override void Update()
@@ -57,14 +54,6 @@ public class Player : LivingEntity
 
         rb.velocity = newVelocity * speed;
         float e = Mathf.Pow(10, -2);
-        if (Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y) > e)
-        {
-            dustParticle.Play();
-        }
-        else
-        {
-            dustParticle.Stop();
-        }
         anim.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
     }
 

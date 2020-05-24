@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour
     }
     Vector3 UpdateTargetPos()
     {
-        Vector3 mouseOffset = mousePos * 3.5f; //mult mouse vector by distance scalar 
+        Vector3 mouseOffset = mousePos * 1f;//3.5f; //mult mouse vector by distance scalar 
         Vector3 ret = player.transform.position + mouseOffset; //find position as it relates to the player
         ret += UpdateShake(); //add the screen shake vector to the target
         ret.z = -10;//zStart; //make sure camera stays at same Z coord

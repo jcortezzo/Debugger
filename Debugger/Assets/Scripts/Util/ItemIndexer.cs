@@ -11,101 +11,22 @@ public class ItemIndexer : MonoBehaviour
     {
         {-1 , "Empty" },
         { 0 , "Cutlass" },
-        { 1 , "Lantern" },
-        { 2 , "Crossbow" },
-        { 3 , "Blunderbuss" },
-        { 4 , "Flintlock" },
-        { 5 , "Flaming Cutlass" },
-        { 6 , "Flaming Crossbow" },
-        { 7 , "Ultra Cutlass" },
-        { 8 , "Staff of the Dead" },
-        { 9 , "Flamethrower" },
-        { 10 , "Double Blunderbuss" },
-        { 11 , "Candle" },
-        { 12 , "Scythe" },
-        { 13 , "Bayonet" },
-        { 14 , "Tentacle Whip" },
-        { 15 , "Assault Rifle" },
-        { 16 , "Sniper Bow" },
-        { 17 , "Flaming Flintlock" },
-        { 18 , "Flaming Axe" },
-        { 19 , "Blade Gun" },
-        { 20 , "Cursed Skull" },
-        { 21 , "Harpoon" },
-        { 22 , "Tranquilizer" },
-        { 23 , "Soul Collector" },
-        { 24 , "Alien Gun" },
+        { 1 , "Flintlock" },
+        { 2 , "Keyboard" }
+        
     };
     private Dictionary<string, int> NameToIndex = new Dictionary<string, int>();
 
     private List<string> BaseWeapons = new List<string>
     {
         "Cutlass",
-        "Lantern",
-        "Crossbow",
-        "Blunderbuss",
         "Flintlock",
-        "Staff of the Dead"
+        "Keyboard"
     };
 
     private Dictionary<(string, string), string> Combinations = new Dictionary<(string, string), string>
     {
-        // Flaming Cutlass
-        {("Cutlass", "Lantern"), "Flaming Cutlass" }, {("Lantern", "Cutlass"), "Flaming Cutlass" },
 
-        // Flaming Crossbow
-        { ("Crossbow", "Lantern"), "Flaming Crossbow" }, {("Lantern", "Crossbow"), "Flaming Crossbow" },
-
-        // Ultra Cutlass
-        {("Cutlass", "Cutlass"), "Ultra Cutlass" },
-
-        // Flamethrower
-        {("Blunderbuss", "Lantern"), "Flamethrower" }, {("Lantern", "Blunderbuss"), "Flamethrower" },
-
-        // Double Blunderbuss
-        {("Blunderbuss", "Blunderbuss"), "Double Blunderbuss"},
-
-        // Candle
-        {("Lantern", "Lantern"), "Candle" },
-
-        // Scythe
-        {("Cutlass", "Staff of the Dead"), "Scythe" }, {("Staff of the Dead", "Cutlass"), "Scythe" },
-
-        // Bayonet
-        {("Cutlass", "Blunderbuss"), "Bayonet" }, {("Blunderbuss", "Cutlass"), "Bayonet" },
-
-        // Assault Rifle
-        {("Flintlock", "Flintlock"), "Assault Rifle" },
-
-        // Sniper Bow
-        {("Crossbow", "Crossbow"), "Sniper Bow" },
-
-        // Flaming Flintlock
-        {("Flintlock", "Lantern"), "Flaming Flintlock" }, {("Lantern", "Flintlock"), "Flaming Flintlock" },
-
-        // Flaming Axe
-        {("Staff of the Dead", "Lantern"), "Flaming Axe" }, {("Lantern", "Staff of the Dead"), "Flaming Axe"},
-
-        // Blade Gun
-        {("Cutlass", "Flintlock"), "Blade Gun" }, {("Flintlock", "Cutlass"), "Blade Gun" },
-
-        // Cursed Skull
-        {("Staff of the Dead", "Staff of the Dead"), "Cursed Skull" },
-
-        // Harpoon
-        {("Crossbow", "Blunderbuss"), "Harpoon" }, {("Blunderbuss", "Crossbow"), "Harpoon"},
-
-        // Tranquilizer
-        //{("Flintlock", "Staff of the Dead"), "Tranquilizer" }, {("Staff of the Dead", "Flintlock"), "Tranquilizer"}
-        {("Crossbow", "Staff of the Dead"), "Tranquilizer" }, {("Staff of the Dead", "Crossbow"), "Tranquilizer"},
-
-        // Soul Collector
-        {("Blunderbuss", "Staff of the Dead"), "Soul Collector" }, {("Staff of the Dead", "Blunderbuss"), "Soul Collector"},
-
-        // Alien Gun
-        {("Blunderbuss", "Flintlock"), "Alien Gun" }, {("Flintlock", "Blunderbuss"), "Alien Gun"},
-
-        //{("Cursed Skull", "Cursed Skull"), "Cursed Skull" }
     };
 
     void Start()

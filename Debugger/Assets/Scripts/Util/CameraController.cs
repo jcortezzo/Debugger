@@ -14,20 +14,23 @@ public class CameraController : MonoBehaviour
     Vector3 shakeVector;
 
     private Player player;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         player = playerGo.GetComponent<Player>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        mousePos = CaptureMousePos();
+        //mousePos = CaptureMousePos();
     }
 
     private void FixedUpdate()
     {
+        mousePos = CaptureMousePos();
         Vector3 target = UpdateTargetPos();
         UpdateCameraPosition(target, new Vector3());
     }
@@ -46,7 +49,7 @@ public class CameraController : MonoBehaviour
     }
     Vector3 UpdateTargetPos()
     {
-        Vector3 mouseOffset = mousePos * 1f;//3.5f; //mult mouse vector by distance scalar 
+        Vector3 mouseOffset = mousePos * 2f;//3.5f; //mult mouse vector by distance scalar 
         Vector3 ret = player.transform.position + mouseOffset; //find position as it relates to the player
         ret += UpdateShake(); //add the screen shake vector to the target
         ret.z = -10;//zStart; //make sure camera stays at same Z coord
@@ -57,7 +60,8 @@ public class CameraController : MonoBehaviour
     {
         Vector3 tempPos;
         tempPos = Vector3.SmoothDamp(transform.position, target, ref refVel, dampening); //smoothly move towards the target
-        transform.position = tempPos; //update the position
+        rb.MovePosition(target);// * Time.fixedDeltaTime);
+        //transform.position = tempPos; //update the position
     }
 
     // shaking

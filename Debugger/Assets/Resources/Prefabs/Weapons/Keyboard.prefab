@@ -136,7 +136,7 @@ MonoBehaviour:
   spread: 0
   swingSpeed: 10
   swingRadius: 150
-  attacking: 1
+  attacking: 0
   hitbox: {fileID: 0}
   knockback: 10
   hitstun: 0.15

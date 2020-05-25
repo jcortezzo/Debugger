@@ -223,10 +223,25 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.31206632
       objectReference: {fileID: 0}
+    - target: {fileID: 584204227764865205, guid: 8931dcb2ae29da245a2425a941a2e8fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 994568129841763601, guid: 8931dcb2ae29da245a2425a941a2e8fb,
         type: 3}
       propertyPath: m_Name
       value: WeaponGiver
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835976918579801116, guid: 8931dcb2ae29da245a2425a941a2e8fb,
+        type: 3}
+      propertyPath: rand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270484690094729570, guid: 8931dcb2ae29da245a2425a941a2e8fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4141192656709684572, guid: 8931dcb2ae29da245a2425a941a2e8fb,
         type: 3}

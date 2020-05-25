@@ -87,7 +87,7 @@ public class WeaponHolder : MonoBehaviour
 
     private float CalculateXOffset(float size)
     {
-        return (2.0f / 5.0f) * size + (2.0f / 5.0f);
+        return (1.0f / 5.0f) * size + (1.0f / 5.0f);//(2.0f / 5.0f) * size + (2.0f / 5.0f);
     }
     public void ToggleColor(SpriteRenderer rd, int val)
     {

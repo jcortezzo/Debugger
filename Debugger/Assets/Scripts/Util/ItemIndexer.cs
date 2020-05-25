@@ -12,7 +12,8 @@ public class ItemIndexer : MonoBehaviour
         {-1 , "Empty" },
         { 0 , "Cutlass" },
         { 1 , "Flintlock" },
-        { 2 , "Keyboard" }
+        { 2 , "Keyboard" },
+        { 3 , "Step" },
         
     };
     private Dictionary<string, int> NameToIndex = new Dictionary<string, int>();
@@ -21,7 +22,8 @@ public class ItemIndexer : MonoBehaviour
     {
         "Cutlass",
         "Flintlock",
-        "Keyboard"
+        "Keyboard",
+        "Step",
     };
 
     private Dictionary<(string, string), string> Combinations = new Dictionary<(string, string), string>

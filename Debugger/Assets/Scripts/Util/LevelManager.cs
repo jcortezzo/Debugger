@@ -22,12 +22,12 @@ public class LevelManager : MonoBehaviour
             Instance.player = GameObject.Find("Player").GetComponent<Player>();
             Destroy(gameObject);
         }
-
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     private void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+        
     }
 
     private void Update()

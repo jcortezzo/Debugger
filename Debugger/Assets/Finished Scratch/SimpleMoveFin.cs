@@ -6,7 +6,7 @@ public class SimpleMove : MonoBehaviour
 {
     public float speed;                //Floating point variable to store the player's movement speed.
     public float health;
-    public GameObject knowledge;
+    //public GameObject knowledge;
 
     private Rigidbody2D rb2d;        //Store a reference to the Rigidbody2D component required to use 2D Physics.
     
@@ -20,10 +20,10 @@ public class SimpleMove : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // mouse clicked
-        {
-            Instantiate(knowledge, transform.position, transform.rotation, transform);
-        }
+        //if (Input.GetButtonDown("Fire1")) // mouse clicked
+        //{
+        //    Instantiate(knowledge, transform.position, transform.rotation, transform);
+        //}
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.

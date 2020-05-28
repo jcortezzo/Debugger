@@ -2174,7 +2174,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Advanced Bug
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7051100496195833028, guid: 8f1929c1f903da74685f86878f262193, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8f1929c1f903da74685f86878f262193, type: 3}
 --- !u!1001 &511321617
 PrefabInstance:

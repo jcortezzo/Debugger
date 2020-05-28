@@ -6,11 +6,13 @@ public class AdvancedBug : IntermediateBug
 {
     [SerializeField] private const float ATTACK_TIME = 2f;
     [SerializeField] private float cooldownTimer;
+    private bool ready;
 
     protected override void Start()
     {
         base.Start();
         cooldownTimer = 0;
+        ready = true;
     }
 
     public override void Update()
@@ -21,14 +23,16 @@ public class AdvancedBug : IntermediateBug
             cooldownTimer -= Time.deltaTime;
         } else
         {
-            cooldownTimer = ATTACK_TIME;
+            //cd = !cd;
         }
     }
 
     public override bool IsAttacking()
     {
-        if (base.IsAttacking()) cooldownTimer = ATTACK_TIME;
-        return base.IsAttacking() && cooldownTimer > 0;
+        //if (cd) return false;
+        if (base.IsAttacking() && ready) cooldownTimer = ATTACK_TIME;
+        ready = false;
+        return base.IsAttacking();
     }
 
     public override string ToString()

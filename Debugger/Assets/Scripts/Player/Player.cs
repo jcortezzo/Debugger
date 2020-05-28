@@ -12,9 +12,14 @@ public class Player : LivingEntity
         alignment = Alignment.FRIEND;
     }
 
+    /**
+     * Controls everything the player specifically does on
+     * a frame. Take a look at LivingEntity's Update()
+     * to see when basic methods like Move(), GetDirection(),
+     * and Attack() are called.
+     */ 
     public override void Update()
     {
-        //GetDirectionalInput();
         base.Update();
         if (Input.GetKeyDown(KeyCode.R) &&
             (weaponHolder.primary == null ||
@@ -45,15 +50,17 @@ public class Player : LivingEntity
         }
     }
 
+    /**
+     * Sets the player's velocity. Should correspond with
+     * pressing arrow keys / wasd
+     */ 
     public override void Move()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector2 newVelocity = new Vector2(horizontal, vertical);
         newVelocity.Normalize();
-
         rb.velocity = newVelocity * speed;
-        float e = Mathf.Pow(10, -2);
         anim.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
     }
 
